@@ -1,8 +1,3 @@
-# Multilingual News Aggregator with GUI (Tkinter) and Web App (Streamlit)
-
-# --------------------
-# COMMON BACKEND LOGIC
-# --------------------
 import nltk
 import feedparser
 import string
@@ -10,8 +5,7 @@ from langdetect import detect
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-# Install required libraries before running:
-# pip install feedparser langdetect nltk streamlit
+
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -70,9 +64,7 @@ def get_cleaned_news():
             })
     return final_news
 
-# --------------------
-# TKINTER GUI VERSION
-# --------------------
+
 
 def run_tkinter_gui():
     import tkinter as tk
@@ -101,9 +93,7 @@ def run_tkinter_gui():
 
     root.mainloop()
 
-# --------------------
-# STREAMLIT WEB VERSION
-# --------------------
+
 
 def run_streamlit_app():
     import streamlit as st
@@ -120,9 +110,7 @@ def run_streamlit_app():
             st.markdown(f"[Read full article]({item['link']})")
             st.markdown("---")
 
-# --------------------
-# MAIN CHOICE ENTRY
-# --------------------
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1 and sys.argv[1] == 'gui':
