@@ -18,3 +18,14 @@ Install required packages:
 
 ```bash
 pip install -r requirements.txt
+
+## 🖥️ Output Screenshots
+
+### ✅ Tkinter GUI Output
+![Tkinter Output](tkinter_output1.png)
+![Tkinter Output](tkinter_output2.png)
+
+### ✅ Streamlit Web Output
+![Streamlit Output](streamlit_output1.png)
+![Streamlit Output](streamlit_output2.png)
+
