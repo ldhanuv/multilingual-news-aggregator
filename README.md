@@ -1,35 +1,42 @@
 # 📰 Multilingual News Aggregator
 
-A Python project that fetches and cleans RSS news feeds in both English and Hindi. Includes:
+A Python project that fetches and displays cleaned news summaries from popular sources in **English and Hindi**.
 
-- 🖥️ GUI (Tkinter)
-- 🌐 Web app (Streamlit)
+Includes both:
+
+- 🖥️ Desktop App (Tkinter GUI)
+- 🌐 Web App (Streamlit)
+
+---
 
 ## 🔧 Features
 
-- Detects language (English / Hindi)
-- Cleans stopwords and punctuation
-- Fetches news from BBC, NDTV, and Navbharat Times
-- Displays clean summaries and source info
+- 🧠 Language detection (English / Hindi)
+- 🧹 Stopword and punctuation removal
+- 📡 Fetches RSS feeds from:
+  - BBC News
+  - NDTV
+  - Navbharat Times
+- ✨ Clean, readable summaries
+- 📍 Supports Unicode Hindi rendering
 
-## 🚀 How to Run
+---
+
+## 📦 Installation
 
 Install required packages:
 
 ```bash
 pip install -r requirements.txt
 
-pip install -r requirements.txt
+##  To run Tkinter GUI:
 
-## 🖥️ Output Screenshots
+bash
+python news_aggregator.py gui
 
+##To run Streamlit Web App:
 
-### ✅ Streamlit Web Output
-![Streamlit Output](streamlit_output1.png)
-![Streamlit Output](streamlit_output2.png)
-
-### ✅ Tkinter GUI Output
-![Tkinter Output](tkinter_output1.png)
-![Tkinter Output](tkinter_output2.png)
+bash
+streamlit run news_aggregator.py
 
 
