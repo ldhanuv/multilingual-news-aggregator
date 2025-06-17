@@ -1,14 +1,14 @@
+# -*- coding: utf-8 -*-
 import nltk
 import feedparser
 import string
 from langdetect import detect
-from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 
-
-
+nltk.download('popular')
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
 
 hindi_stopwords = {
     'है', 'और', 'था', 'थे', 'की', 'के', 'का', 'से', 'को', 'पर', 'यह', 'हैं', 'नहीं',
@@ -27,7 +27,7 @@ rss_urls = {
 def fetch_rss_articles(url):
     feed = feedparser.parse(url)
     articles = []
-    for entry in feed.entries[:5]:  # Limit to latest 5 articles
+    for entry in feed.entries[:5]:
         article = {
             "title": entry.title,
             "link": entry.link,
@@ -38,9 +38,7 @@ def fetch_rss_articles(url):
     return articles
 
 def clean_text(text):
-    words = word_tokenize(text)
-    cleaned_words = [word for word in words if word.lower() not in stop_words and word not in string.punctuation]
-    return " ".join(cleaned_words)
+    return text
 
 def detect_language(text):
     try:
@@ -63,8 +61,6 @@ def get_cleaned_news():
                 "link": article['link']
             })
     return final_news
-
-
 
 def run_tkinter_gui():
     import tkinter as tk
@@ -93,8 +89,6 @@ def run_tkinter_gui():
 
     root.mainloop()
 
-
-
 def run_streamlit_app():
     import streamlit as st
 
@@ -106,10 +100,13 @@ def run_streamlit_app():
         for item in news:
             st.subheader(item['title'])
             st.markdown(f"**Source:** {item['source']} | **Language:** `{item['language'].upper()}`")
-            st.write(item['cleaned_summary'])
+            st.markdown(
+                f"""<p style='font-family:"Noto Sans Devanagari", "Mangal", "Segoe UI", sans-serif;
+                font-size:16px;'>{item['cleaned_summary']}</p>""",
+                unsafe_allow_html=True
+            )
             st.markdown(f"[Read full article]({item['link']})")
             st.markdown("---")
-
 
 if __name__ == "__main__":
     import sys
@@ -118,4 +115,8 @@ if __name__ == "__main__":
     elif len(sys.argv) > 1 and sys.argv[1] == 'web':
         run_streamlit_app()
     else:
-        print("Usage: python news_aggregator.py [gui|web]")
+        try:
+            import streamlit as st
+            run_streamlit_app()
+        except:
+            print("Usage: python news_aggregator.py [gui|web]")
